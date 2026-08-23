@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Mini Scrabble Duel - Fammy vs Bot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>3D Mini Scrabble Duel</h1>
+
+    <!-- Floating Score Popup container -->
+    <div id="score-popup" class="score-popup hidden">+0 PTS</div>
+
+    <div class="game-container">
+        <!-- Sidebar with Profiles, Difficulty & Logs -->
+        <div class="sidebar">
+            <!-- User Profile (Fammy) -->
+            <div class="profile-card active-turn" id="user-profile">
+                <img src="c:\Users\OG_POSEIDON\Pictures\71d27f52-a81e-41b9-98b1-6a0aed96b5b9.jfif" alt="Fammy Avatar" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Fammy'">
+                <div class="profile-info">
+                    <h3>Fammy</h3>
+                    <p>Score: <span id="user-score">0</span></p>
+                    <span class="turn-indicator" id="user-turn-badge">Your Turn</span>
+                </div>
+            </div>
+
+            <!-- Bot Profile -->
+            <div class="profile-card" id="bot-profile">
+                <img src="https://api.dicebear.com/7.x/bottts/svg?seed=ScrabbleBot" alt="Bot Avatar">
+                <div class="profile-info">
+                    <h3>ScrabbleBot</h3>
+                    <p>Score: <span id="bot-score">0</span></p>
+                    <span class="turn-indicator hidden" id="bot-turn-badge">Bot's Turn...</span>
+                </div>
+            </div>
+
+            <!-- Difficulty Selector -->
+            <div class="difficulty-container">
+                <h4>Difficulty</h4>
+                <div class="difficulty-buttons">
+                    <button class="diff-btn" onclick="setDifficulty('easy')">Easy</button>
+                    <button class="diff-btn active" onclick="setDifficulty('medium')" id="default-diff">Medium</button>
+                    <button class="diff-btn" onclick="setDifficulty('hard')">Hard</button>
+                </div>
+            </div>
+
+            <!-- Game Log -->
+            <div class="log-box" id="game-log">
+                <div>Game started! Good luck, Fammy! Drag tiles onto the board.</div>
+            </div>
+        </div>
+
+        <!-- Main Board Area -->
+        <div class="main-board-area">
+            <div class="board-perspective">
+                <div class="board" id="board"></div>
+            </div>
+
+            <div class="rack-container">
+                <h4>Your Tile Rack (Drag to place or return)</h4>
+                <div class="rack" id="rack" ondragover="allowDrop(event)" ondrop="dropToRack(event)"></div>
+            </div>
+
+            <div class="controls">
+                <button id="submit-btn" onclick="submitWord()">Submit Word</button>
+                <button id="pass-btn" onclick="passTurn()">Pass Turn</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
